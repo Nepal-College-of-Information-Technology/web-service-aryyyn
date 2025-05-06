@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITALIAN BRAINROT UNIVERSE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        :root {
+            --red: #CD212A;
+            --white: #F4F5F0;
+            --green: #008C45;
+            --black: #000000;
+            --yellow: #FFEB3B;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: var(--yellow);
+            color: var(--black);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,10 L70,10 L90,50 L70,90 L30,90 L10,50 Z" fill="%23008C45" opacity="0.2"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="%23CD212A" opacity="0.2"/></svg>');
+            background-size: 200px;
+            background-blend-mode: overlay;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--green), var(--white), var(--red));
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 10px dashed var(--black);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 5px 5px 0 var(--black);
+            color: white;
+            animation: rainbow 3s infinite, shake 0.5s infinite alternate;
+        }
+
+        @keyframes rainbow {
+            0% { color: var(--red); }
+            33% { color: var(--green); }
+            66% { color: var(--white); }
+            100% { color: var(--red); }
+        }
+
+        @keyframes shake {
+            from { transform: rotate(-2deg); }
+            to { transform: rotate(2deg); }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .character-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            border: 5px solid var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .character-card h2 {
+            color: var(--red);
+            margin-top: 0;
+            font-size: 1.8rem;
+            text-decoration: underline wavy var(--green);
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid var(--black);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .tier {
+            background-color: var(--green);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .power {
+            background-color: var(--red);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        #tung-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--black);
+            color: var(--yellow);
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 20px var(--red);
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .spaghetti {
+            position: absolute;
+            background-color: #F5DEB3;
+            height: 5px;
+            transform-origin: 0 0;
+            z-index: -1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .pizza {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="%23FFA500"/><circle cx="30" cy="40" r="8" fill="%23FF0000"/><circle cx="60" cy="30" r="6" fill="%23FF0000"/><circle cx="70" cy="60" r="7" fill="%23FF0000"/><circle cx="40" cy="70" r="5" fill="%23FF0000"/><path d="M50,5 A45,45 0 0,1 95,50 L50,50 Z" fill="%23CD853F"/></svg>');
+            background-size: contain;
+            z-index: -1;
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        footer {
+            background: linear-gradient(90deg, var(--red), var(--white), var(--green));
+            padding: 20px;
+            text-align: center;
+            border-top: 10px dotted var(--black);
+            margin-top: 50px;
+        }
+
+        .meme-generator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            border: 5px dashed var(--red);
+        }
+
+        .meme-generator button {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .meme-generator button:hover {
+            background-color: var(--red);
+            transform: scale(1.1);
+        }
+
+        #meme-display {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            border: 3px solid var(--black);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #meme-text {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 0 white, -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white;
+            padding: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .crypto-widget {
+            background-color: var(--black);
+            color: var(--yellow);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            font-family: monospace;
+            border: 3px solid var(--red);
+        }
+
+        .crypto-price {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .price-change {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .up {
+            color: #00FF00;
+        }
+
+        .down {
+            color: #FF0000;
+        }
+
+        /* CRUD Operations Styles */
+        .crud-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 5px solid var(--black);
+        }
+
+        .crud-section h2 {
+            color: var(--red);
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .crud-form {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .crud-form input, .crud-form textarea, .crud-form select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid var(--black);
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .crud-form button {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .crud-form button:hover {
+            background-color: var(--red);
+        }
+
+        .crud-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .crud-actions button {
+            flex: 1;
+        }
+
+        #character-list {
+            margin-top: 20px;
+        }
+
+        .character-item {
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 3px solid var(--black);
+            position: relative;
+        }
+
+        .character-item h3 {
+            margin-top: 0;
+            color: var(--red);
+        }
+
+        .character-item .item-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .item-actions button {
+            background-color: var(--black);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+        }
+
+        .item-actions button:hover {
+            background-color: var(--red);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ITALIAN BRAINROT UNIVERSE</h1>
+        <p>Welcome to the most chaotic meme dimension on the internet</p>
+    </header>
+
+    <div class="crud-section">
+        <h2>Manage Brainrot Characters</h2>
+        <form id="character-form" class="crud-form">
+            <input type="hidden" id="character-id">
+            <input type="text" id="character-name" placeholder="Character Name" required>
+            <input type="text" id="character-image" placeholder="Image URL">
+            <textarea id="character-description" placeholder="Description" rows="3"></textarea>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" id="character-tier" placeholder="Tier (e.g., 8-C)">
+                <input type="text" id="character-power" placeholder="Power Level">
+            </div>
+            <div class="crud-actions">
+                <button type="submit" id="save-btn">Add Character</button>
+                <button type="button" id="clear-btn">Clear</button>
+            </div>
+        </form>
+        
+        <div id="character-list">
+            <!-- Characters will be listed here -->
+        </div>
+    </div>
+
+    <div class="container" id="characters-container">
+        <!-- Character cards will be generated here -->
+    </div>
+
+    <div class="meme-generator">
+        <h2 style="text-align: center; color: var(--red);">Brainrot Meme Generator</h2>
+        <div id="meme-display">
+            <div id="meme-text">Click Generate!</div>
+        </div>
+        <button onclick="generateMeme()">Generate Random Brainrot</button>
+    </div>
+
+    <div class="crypto-widget">
+        <h2 style="text-align: center;">SAHUR Token Price</h2>
+        <div class="crypto-price">$0.0003482</div>
+        <div class="price-change up">↑ 38.4% (24h)</div>
+        <p style="text-align: center;">Market Cap: $346,860</p>
+        <p style="text-align: center; font-size: 0.8rem;">The official token of the Tung Tung Tung Sahur memeverse</p>
+    </div>
+
+    <div id="tung-counter" onclick="incrementCounter()">TUNG: 0</div>
+
+    <footer>
+        <p>© 2025 Italian Brainrot Universe - All rights reserved (maybe)</p>
+        <p>Warning: Prolonged exposure may cause actual brain rot</p>
+    </footer>
+
+    <script>
+        // Character data and CRUD operations
+        let characters = [
+            {
+                id: 1,
+                name: "Tung Tung Tung Sahur",
+                image: "https://cdn-0001.qstv.on.epicgames.com/bHUlDShxdYIDKlNiIh/image/landscape_comp.jpeg",
+                description: "The terrifying anomaly that only comes out at Sahur. If you're called for Sahur three times and don't answer, he comes to your house with his baseball bat!",
+                tier: "8-C",
+                power: "Building Level"
+            },
+            {
+                id: 2,
+                name: "Bombardino Crocodilo",
+                image: "https://i.redd.it/bombardino-crocodilo-v0-6odt9yqrqgse1.png?width=1919&format=png&auto=webp&s=c7170514258df9e4956572b13be3e2cab88be498",
+                description: "The destructive crocodile decked out in military hardware - goggles, grenades, armor - and narrated through random faux-Italian-English rhymes.",
+                tier: "8-B",
+                power: "City Block Level"
+            },
+            {
+                id: 3,
+                name: "Lirilarila",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4MKvsF2R3fONBfa5nL_qJ1wVVglI54OgAhw&s",
+                description: "The gentle plant-animal hybrid (usually a cactus-elephant) with hypnotic repetition and soothing yet creepy narration.",
+                tier: "Unknown",
+                power: "Mystical"
+            },
+            {
+                id: 4,
+                name: "Brr Brr Patapim",
+                image: "https://static.wikia.nocookie.net/brainrotnew/images/f/f7/Brr_Brr_Patapim.png/revision/latest/thumbnail/width/360/height/450?cb=20250326180223",
+                description: "The moss-covered monkey entity that frequently battles Tung Tung Tung Sahur in epic AI-generated fights.",
+                tier: "8-C",
+                power: "Building Level"
+            }
+        ];
+
+        // DOM elements
+        const characterForm = document.getElementById('character-form');
+        const characterList = document.getElementById('character-list');
+        const charactersContainer = document.getElementById('characters-container');
+        const saveBtn = document.getElementById('save-btn');
+        
+        // Form submission
+        characterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const id = document.getElementById('character-id').value;
+            const name = document.getElementById('character-name').value;
+            const image = document.getElementById('character-image').value;
+            const description = document.getElementById('character-description').value;
+            const tier = document.getElementById('character-tier').value;
+            const power = document.getElementById('character-power').value;
+            
+            if (id) {
+                // Update existing character
+                const index = characters.findIndex(c => c.id == id);
+                if (index !== -1) {
+                    characters[index] = {
+                        id: parseInt(id),
+                        name,
+                        image: image || "https://via.placeholder.com/300x200?text=No+Image",
+                        description,
+                        tier,
+                        power
+                    };
+                }
+            } else {
+                // Add new character
+                const newId = characters.length > 0 ? Math.max(...characters.map(c => c.id)) + 1 : 1;
+                characters.push({
+                    id: newId,
+                    name,
+                    image: image || "https://via.placeholder.com/300x200?text=No+Image",
+                    description,
+                    tier,
+                    power
+                });
+            }
+            
+            // Refresh displays
+            renderCharacterList();
+            renderCharacterCards();
+            
+            // Reset form
+            characterForm.reset();
+            document.getElementById('character-id').value = '';
+            saveBtn.textContent = 'Add Character';
+            
+            // Play fun sound
+            playTungSound();
+        });
+        
+        // Clear form
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            characterForm.reset();
+            document.getElementById('character-id').value = '';
+            saveBtn.textContent = 'Add Character';
+        });
+        
+        // Edit character
+        function editCharacter(id) {
+            const character = characters.find(c => c.id == id);
+            if (character) {
+                document.getElementById('character-id').value = character.id;
+                document.getElementById('character-name').value = character.name;
+                document.getElementById('character-image').value = character.image;
+                document.getElementById('character-description').value = character.description;
+                document.getElementById('character-tier').value = character.tier;
+                document.getElementById('character-power').value = character.power;
+                
+                saveBtn.textContent = 'Update Character';
+                document.getElementById('character-name').focus();
+            }
+        }
+        
+        // Delete character
+        function deleteCharacter(id) {
+            if (confirm('Are you sure you want to delete this brainrot character?')) {
+                characters = characters.filter(c => c.id != id);
+                renderCharacterList();
+                renderCharacterCards();
+                playTungSound();
+            }
+        }
+        
+        // Render character list for management
+        function renderCharacterList() {
+            characterList.innerHTML = '';
+            
+            characters.forEach(character => {
+                const item = document.createElement('div');
+                item.className = 'character-item';
+                item.innerHTML = `
+                    <div class="item-actions">
+                        <button onclick="editCharacter(${character.id})">✏️</button>
+                        <button onclick="deleteCharacter(${character.id})">🗑️</button>
+                    </div>
+                    <h3>${character.name}</h3>
+                    <p><strong>Tier:</strong> ${character.tier} | <strong>Power:</strong> ${character.power}</p>
+                    <p>${character.description}</p>
+                `;
+                characterList.appendChild(item);
+            });
+        }
+        
+        // Render character cards for display
+        function renderCharacterCards() {
+            charactersContainer.innerHTML = '';
+            
+            characters.forEach(character => {
+                const card = document.createElement('div');
+                card.className = 'character-card';
+                card.innerHTML = `
+                    <h2>${character.name}</h2>
+                    <img src="${character.image}" alt="${character.name}">
+                    <p>${character.description}</p>
+                    <div class="stats">
+                        <span class="tier">Tier: ${character.tier}</span>
+                        <span class="power">Power: ${character.power}</span>
+                    </div>
+                    ${character.name.includes('Tung') ? '<button onclick="playTungSound()">Play Tung Sound</button>' : ''}
+                `;
+                charactersContainer.appendChild(card);
+            });
+        }
+
+        // Falling spaghetti effect
+        function createSpaghetti() {
+            const spaghetti = document.createElement('div');
+            spaghetti.classList.add('spaghetti');
+            
+            // Random position at top of screen
+            const left = Math.random() * window.innerWidth;
+            spaghetti.style.left = `${left}px`;
+            spaghetti.style.top = '0';
+            
+            // Random length and rotation
+            const length = Math.random() * 200 + 100;
+            spaghetti.style.width = `${length}px`;
+            spaghetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            // Random animation duration
+            const duration = Math.random() * 5 + 3;
+            spaghetti.style.animationDuration = `${duration}s`;
+            
+            document.body.appendChild(spaghetti);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                spaghetti.remove();
+            }, duration * 1000);
+        }
+
+        // Create flying pizza slices
+        function createPizza() {
+            const pizza = document.createElement('div');
+            pizza.classList.add('pizza');
+            
+            // Random position
+            const left = Math.random() * window.innerWidth;
+            const top = Math.random() * window.innerHeight;
+            pizza.style.left = `${left}px`;
+            pizza.style.top = `${top}px`;
+            
+            // Random size
+            const size = Math.random() * 50 + 30;
+            pizza.style.width = `${size}px`;
+            pizza.style.height = `${size}px`;
+            
+            document.body.appendChild(pizza);
+            
+            // Random movement
+            const xSpeed = (Math.random() - 0.5) * 4;
+            const ySpeed = (Math.random() - 0.5) * 4;
+            
+            function movePizza() {
+                const rect = pizza.getBoundingClientRect();
+                let newLeft = rect.left + xSpeed;
+                let newTop = rect.top + ySpeed;
+                
+                // Bounce off edges
+                if (newLeft <= 0 || newLeft + rect.width >= window.innerWidth) {
+                    pizza.dataset.xSpeed = -xSpeed;
+                }
+                if (newTop <= 0 || newTop + rect.height >= window.innerHeight) {
+                    pizza.dataset.ySpeed = -ySpeed;
+                }
+                
+                pizza.style.left = `${newLeft}px`;
+                pizza.style.top = `${newTop}px`;
+                
+                requestAnimationFrame(movePizza);
+            }
+            
+            movePizza();
+        }
+
+        // Tung counter functionality
+        let tungCount = 0;
+        function incrementCounter() {
+            tungCount++;
+            document.getElementById('tung-counter').textContent = `TUNG: ${tungCount}`;
+            
+            // Play sound
+            playTungSound();
+            
+            // Visual effect
+            const counter = document.getElementById('tung-counter');
+            counter.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+            }, 200);
+            
+            // Create spaghetti when counter reaches multiples of 3
+            if (tungCount % 3 === 0) {
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createSpaghetti, i * 100);
+                }
+            }
+        }
+
+        // Play Tung sound
+        function playTungSound() {
+            const audio = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...');
+            audio.volume = 0.3;
+            audio.play().catch(e => console.log("Audio play failed:", e));
+        }
+
+        // Meme generator
+        const memeTexts = [
+            "TUNG TUNG TUNG SAHUR",
+            "BRRR BRRR PATAPIM",
+            "BOMBARDINO CROCODILO",
+            "LIRILARILA LIRILARILA",
+            "CAT"
+        ];
+
+        const memeBackgrounds = [
+            'url("https://unchainedcrypto.com/wp-content/uploads/2024/08/Untitled-design.png")',
+            'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB2zFLFiae58k4s9WFCvvzC4peNn4rMSZMzQ&s")',
+            'url("https://preview.redd.it/a-side-effect-of-lackadaisy-brainrot-no-one-tells-you-is-v0-9p8z8llx5d0c1.jpg?width=564&format=pjpg&auto=webp&s=6f0eb3cb479ca8ac3e7b50bc7476e9e088514093")',
+        ];
+
+        function generateMeme() {
+            const memeDisplay = document.getElementById('meme-display');
+            const memeText = document.getElementById('meme-text');
+            
+            // Random text
+            memeText.textContent = memeTexts[Math.floor(Math.random() * memeTexts.length)];
+            
+            // Random background
+            memeDisplay.style.background = memeBackgrounds[Math.floor(Math.random() * memeBackgrounds.length)];
+            memeDisplay.style.backgroundSize = 'cover';
+            
+            // Random text color
+            const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFFFF', '#000000', '#FFEB3B'];
+            memeText.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random rotation
+            memeText.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+            
+            // Random font size
+            memeText.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+        }
+
+        // Initialize
+        window.onload = function() {
+            // Create initial spaghetti
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createSpaghetti, i * 300);
+            }
+            
+            // Create some pizzas
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createPizza, i * 1000);
+            }
+            
+            // Generate first meme
+            generateMeme();
+            
+            // Render initial characters
+            renderCharacterList();
+            renderCharacterCards();
+            
+            // Play ambient tung sounds occasionally
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    playTungSound();
+                }
+            }, 10000);
+        };
+
+        // Make counter draggable
+        const counter = document.getElementById('tung-counter');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        counter.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - counter.getBoundingClientRect().left;
+            offsetY = e.clientY - counter.getBoundingClientRect().top;
+            counter.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            counter.style.left = `${e.clientX - offsetX}px`;
+            counter.style.top = `${e.clientY - offsetY}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            counter.style.cursor = 'pointer';
+        });
+    </script>
+</body>
+</html>
